@@ -1,15 +1,15 @@
 # Purchase Intention Predictor
 
 An interactive Streamlit app that predicts whether a shopper intends to buy from their
-local township grocery store, from five answers on a consumer survey — and, more
-importantly, tries to explain itself while it does it.
+local grocery store in Soweto, from five answers on a published consumer survey — and,
+more importantly, tries to explain itself while it does it.
 
 ![The app: a customer profile panel on the left, prediction panel on the right](docs/screenshot.png)
 
 ## What it does
 
-A Random Forest, trained on a survey of 281 subsistence-retail shoppers, reads five
-answers and estimates purchase intention as one of three outcomes: **no intention**,
+A Random Forest, trained on a published survey of 281 subsistence-retail shoppers in
+Soweto, reads five answers and estimates purchase intention as one of three outcomes: **no intention**,
 **neutral**, or **strong intention**.
 
 The interface is built so a visitor understands what is happening without reading this
@@ -121,15 +121,32 @@ Custom CSS against Streamlit internals is version-fragile, which is why `require
 pins exact versions. `random_forest_model.pkl` is pickled with scikit-learn 1.9.0 and
 the app warns at startup if a different version is installed.
 
-## Data
+## Data source
 
-The survey data behind this project was collected as part of academic research at the
-University of the Free State. It contains no names, contact details, dates or
-locations — every column is a numeric coded response.
+The survey data is published open data, not collected for this project. It is the
+companion dataset to:
 
-If you intend to reuse the data rather than the code, please ask first. Anonymity in
-a small survey is not absolute: 39 of the 281 respondents (14%) are unique on the
-combination of gender, age, marital status, employment status and education alone.
+> Zulu, V.M. & Nkuna, A.M. (2022). *Data modelling of subsistence retail consumer
+> purchase behavior in South Africa*. **Data in Brief**, 42, 108094.
+> [doi:10.1016/j.dib.2022.108094](https://doi.org/10.1016/j.dib.2022.108094)
+
+Dataset: *Subsistence Retail Consumer Data*, Mendeley Data,
+[doi:10.17632/5z37z85jck.1](https://doi.org/10.17632/5z37z85jck.1) — **CC BY 4.0**,
+so it is free to reuse with attribution.
+
+281 usable responses (94% of 300 approached) were collected by self-administered
+questionnaire from grocery shoppers in Soweto, on a five-point Likert scale. The
+original study used PLS-SEM; this project is an independent reuse of the same data
+for supervised classification.
+
+The column prefixes are the study's constructs:
+
+| Prefix | Construct | | Prefix | Construct |
+| --- | --- | --- | --- | --- |
+| `E` | Empathy | | `PPQ` | Perceived Product Quality |
+| `C` | Convenience | | `CT` | Customer Trust |
+| `PS` | Price Sensitivity | | `PV` | Perceived Value |
+| `PE` | Physical Environment | | `PI` | Purchase Intention |
 
 ## Licence
 
@@ -138,6 +155,8 @@ the survey data.
 
 ## Credits
 
-Built by Luyanda Mdhluli. The underlying study and coursework were supervised within
-the University of the Free State; the original repository lives under the
-[ufs-za](https://github.com/ufs-za) organisation.
+Built by Luyanda Mdhluli as a university project in 2024, and tidied up since. The
+original repository lives under the [ufs-za](https://github.com/ufs-za) organisation.
+
+The data is the work of Valencia Melissa Zulu and Andriaan Mpho Nkuna (School of
+Business Sciences, University of the Witwatersrand), used here under CC BY 4.0.

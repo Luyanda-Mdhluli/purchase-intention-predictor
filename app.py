@@ -445,10 +445,10 @@ def result_html(predicted_class, probabilities):
 st.markdown('<div class="pi-title">Purchase Intention Predictor</div>', unsafe_allow_html=True)
 st.markdown(
     "<div class='pi-sub'>"
-    f"<b>{SURVEY_N} shoppers</b> at township grocery stores were surveyed. A random "
-    "forest learned, from just five of their answers, whether a shopper intends to buy "
-    "again. Answer as one of those shoppers on the left and the expectation on the "
-    "right moves as you go — no button, so you can feel which answers actually matter."
+    f"<b>{SURVEY_N} grocery shoppers in Soweto</b> were surveyed. A random forest "
+    "learned, from just five of their answers, whether a shopper intends to buy again. "
+    "Answer as one of those shoppers on the left and the expectation on the right moves "
+    "as you go — no button, so you can feel which answers actually matter."
     "</div>",
     unsafe_allow_html=True,
 )
@@ -582,6 +582,11 @@ st.markdown(
     "intention” would already be right most of the time. The model gets 86% of "
     "held-out shoppers right — better, but not by as much as a high percentage above "
     "suggests. It reads five answers only; price, stock and distance are not in it."
+    "<br><br>"
+    "Data: Zulu, V.M. &amp; Nkuna, A.M. (2022), <i>Data modelling of subsistence retail "
+    "consumer purchase behavior in South Africa</i>, Data in Brief 42, 108094, "
+    '<a href="https://doi.org/10.1016/j.dib.2022.108094" target="_blank" '
+    'rel="noopener">doi:10.1016/j.dib.2022.108094</a> — used under CC BY 4.0.'
     "</div>",
     unsafe_allow_html=True,
 )
