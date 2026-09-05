@@ -14,8 +14,9 @@ import streamlit as st
 
 # The pickle was created with this scikit-learn version. Loading it under a different
 # version is not guaranteed to reproduce the same predictions, so we surface a warning
-# rather than let it fail quietly. requirements.txt pins the matching version.
-MODEL_SKLEARN_VERSION = "1.5.2"
+# rather than let it fail quietly. requirements.txt pins the matching version; rerun
+# train.py after changing it.
+MODEL_SKLEARN_VERSION = "1.9.0"
 MODEL_FILENAME = "random_forest_model.pkl"
 
 # Column order the model was fitted on. Passing a DataFrame with these names (rather

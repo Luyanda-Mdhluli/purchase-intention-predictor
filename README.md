@@ -19,9 +19,8 @@ intention.
 
 ## Requirements
 
-Python 3.11. The pinned `scikit-learn==1.5.2` — the version `random_forest_model.pkl`
-was pickled with — has no wheels for Python 3.13+. The app warns at startup if the
-installed scikit-learn does not match.
+Python 3.11 or newer (tested on 3.11 and 3.14). The app warns at startup if the
+installed scikit-learn is not the version `random_forest_model.pkl` was pickled with.
 
 ## Installation
 
@@ -76,11 +75,8 @@ The `PI1` survey item (1-5) is collapsed to three classes: 1 and 2 become `0`
 
 ### Accuracy, honestly
 
-The ~95% accuracy quoted in the notebook's write-up belongs to the **37-feature**
-model. The 5-feature model this app ships scores about **86%** on the hold-out split,
-and recall on class `0` (no intention) is only ~0.5 — there are just 28 such rows out
-of 281. Treat "no intention" predictions with caution.
-
-Because `train.py` can regenerate the model, you can drop the `scikit-learn==1.5.2`
-pin: bump it, rerun `train.py`, and commit the new `.pkl`. That will shift predictions
-slightly, so it is left as your call.
+The ~95% accuracy quoted in the original notebook's write-up belongs to the
+**37-feature** model. The 5-feature model this app ships scores **0.86** on the
+hold-out split, and recall on class `0` (no intention) is only 0.50 — there are just
+28 such rows out of 281 (`{0: 28, 1: 196, 2: 57}`). Treat "no intention" predictions
+with caution.
