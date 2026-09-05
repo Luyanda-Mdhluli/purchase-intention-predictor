@@ -1,8 +1,9 @@
 # Purchase Intention Predictor
 
 A Streamlit app that predicts a subsistence-retail customer's purchase intention from
-five survey inputs, using a pre-trained Random Forest model, and shows the predicted
-class probabilities as a donut chart.
+five survey inputs, using a pre-trained Random Forest model. The result reads as a
+hero confidence figure plus one bar per outcome, with only the predicted class
+carrying colour.
 
 ## Inputs
 
@@ -22,29 +23,32 @@ intention.
 Python 3.11 or newer (tested on 3.11 and 3.14). The app warns at startup if the
 installed scikit-learn is not the version `random_forest_model.pkl` was pickled with.
 
-## Installation
-
-1. Clone this repository:
-   ```
-   git clone https://github.com/your-username/purchase-intention-predictor.git
-   cd purchase-intention-predictor
-   ```
-
-2. Install the required packages:
-   ```
-   pip install -r requirements.txt
-   ```
-
-3. Ensure `random_forest_model.pkl` is in the same directory as `app.py`.
-
-## Usage
+## Running it locally
 
 ```
+python -m venv .venv
+.venv/Scripts/activate        # Windows (PowerShell or Git Bash)
+source .venv/bin/activate     # macOS / Linux
+pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Adjust the sliders and dropdowns, then click **Make Prediction**. Results persist while
-you change inputs; a note appears when they are stale.
+It opens on http://localhost:8501. Set a profile, then click **Predict intention**.
+Results persist while you change the controls; a note appears when they are stale.
+
+`random_forest_model.pkl` must sit beside `app.py`.
+
+## Interface
+
+The theme lives in `.streamlit/config.toml`; `app.py` layers a frosted-glass treatment
+over it. Two notes for anyone editing that CSS:
+
+- The cards are targeted by the `st-key-*` class Streamlit emits for a **keyed**
+  container (`st.container(border=True, key=...)`). The generic layout-wrapper testid
+  is shared with plain column wrappers, so styling that instead also glasses the
+  nested Age/Gender columns.
+- Outcome bars are plain HTML/CSS rather than a chart library, which is why there is
+  no charting dependency.
 
 ## Deployment
 

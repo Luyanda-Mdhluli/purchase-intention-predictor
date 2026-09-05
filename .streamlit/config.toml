@@ -1,9 +1,10 @@
-# Theme lives here rather than in injected CSS: this is the supported API and it
-# survives Streamlit DOM changes, and it keeps text readable when the viewer's
-# browser is in dark mode.
+# Theme lives here rather than in injected CSS: this is the supported API, it survives
+# Streamlit DOM changes, and it drives the widget internals (slider tracks, focus
+# rings) that CSS cannot reach cleanly. app.py layers the glass surfaces on top.
 [theme]
-base = "light"
-primaryColor = "#b38600"
-backgroundColor = "#fff9e6"
-secondaryBackgroundColor = "#fff3cc"
-textColor = "#000000"
+base = "dark"
+primaryColor = "#8b7cf6"
+backgroundColor = "#07070f"
+secondaryBackgroundColor = "#16142a"
+textColor = "#ecebf5"
+font = "sans serif"

@@ -7,6 +7,5 @@ numpy==2.5.2
 pandas==3.0.5
 joblib==1.6.0
 streamlit==1.63.0
-plotly==7.0.0
 # Reading the .xlsx — needed by train.py only, not by the app.
 openpyxl==3.1.5
