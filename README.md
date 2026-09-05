@@ -1,9 +1,13 @@
 # Purchase Intention Predictor
 
 A Streamlit app that predicts a subsistence-retail customer's purchase intention from
-five survey inputs, using a pre-trained Random Forest model. The result reads as a
-hero confidence figure plus one bar per outcome, with only the predicted class
-carrying colour.
+five survey inputs, using a pre-trained Random Forest model.
+
+It is built to explain itself without this README. It shows the real questionnaire
+statement behind each control, updates live so you can feel which answers move the
+outcome, marks every bar with how the 281 surveyed shoppers actually answered, names
+the single change that would most raise the chance of buying, and says plainly where
+the model is weak.
 
 ## Inputs
 
@@ -49,6 +53,15 @@ over it. Two notes for anyone editing that CSS:
   nested Age/Gender columns.
 - Outcome bars are plain HTML/CSS rather than a chart library, which is why there is
   no charting dependency.
+- `SURVEY_COUNTS` in `app.py` hardcodes the target distribution `{0: 28, 1: 196,
+  2: 57}` from the training data, so the app can draw base-rate reference marks
+  without reading the spreadsheet at runtime. Rerun `train.py` and these need
+  updating if the data ever changes.
+- `SURVEY_ITEMS` holds the questionnaire wording, recovered from the notebook that
+  built the minimum dataset ("Luyanda Mdhluli Assignment 02").
+- The "biggest lever" suggestion scores all candidate answer changes in one batched
+  `predict_proba` call, and covers only the three attitudinal answers: age and gender
+  are not things a store can change.
 
 ## Deployment
 
@@ -70,6 +83,13 @@ documented in the script: it trains on the five features the app actually collec
 rather than all 37 columns, and it fixes `random_state` so runs are reproducible. The
 original notebook set no `random_state`, so `random_forest_model.pkl` as committed
 cannot be reproduced exactly by anything.
+
+### Where the five features came from
+
+`Luyanda Mdhluli Assignment 02` selected them by cross-category correlation and wrote
+`minimum_dataset = df[['PI1','PPQ1','PV3','PV2','Age','Gender']]`; `Assignment 03`
+then trained on that. Age and gender were kept deliberately despite failing the
+correlation threshold, "so as to better understand possible demographic trends".
 
 ### How the target is derived
 
