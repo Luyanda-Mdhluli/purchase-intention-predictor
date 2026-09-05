@@ -1,5 +1,13 @@
-streamlit
-numpy
-joblib
-plotly
-scikit-learn
+# Pinned deliberately. random_forest_model.pkl was pickled with scikit-learn 1.5.2;
+# loading it under a different version is not guaranteed to give the same predictions.
+# scikit-learn 1.5.2 ships wheels for Python <= 3.12 — the devcontainer's 3.11 is the
+# supported runtime. Now that train.py exists you can regenerate the model on a newer
+# scikit-learn instead; see README.
+scikit-learn==1.5.2
+numpy==2.1.3
+pandas==2.2.3
+joblib==1.4.2
+streamlit==1.63.0
+plotly==7.0.0
+# Reading the .xlsx — needed by train.py only, not by the app.
+openpyxl==3.1.5
