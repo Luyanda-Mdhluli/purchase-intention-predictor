@@ -95,8 +95,8 @@ they measure the same construct as the target.
 
 They were selected by cross-category correlation in the original analysis, which wrote
 `minimum_dataset = df[['PI1','PPQ1','PV3','PV2','Age','Gender']]`. Age and gender were
-kept deliberately despite failing the correlation threshold, "so as to better
-understand possible demographic trends".
+kept deliberately despite failing the correlation threshold, so as to better
+understand possible demographic trends.
 
 ## How it is built
 
